@@ -1,0 +1,16 @@
+.input-style {
+  border: 1px solid var(--grey-light-50-color);
+  height: 45px;
+  border-radius: 10px;
+  padding: 8px;
+  color: var(--grey-light-100-color);
+  background-color: var(--secondary-color);
+}
+
+.input-style::placeholder {
+  color: var(--grey-light-100-color);
+}
+
+.input-style:first-of-type {
+  margin-right: 55px;
+}

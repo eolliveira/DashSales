@@ -1,10 +1,9 @@
 import { styled } from 'styled-components';
-import './styles.css';
 
 export function Header() {
   return (
     <Container>
-      <Title className="main-header-title">DS Sales</Title>
+      <Title className="main-header-title">DashSales</Title>
     </Container>
   );
 }

@@ -1,12 +1,19 @@
+import styled from 'styled-components';
 import './App.css';
+import { Filter } from './components/filter';
 import { Header } from './components/header';
 
-function App() {
+export default function App() {
   return (
     <>
       <Header />
+      <Wapper>
+        <Filter />
+      </Wapper>
     </>
   );
 }
 
-export default App;
+const Wapper = styled.div`
+  padding: 30px;
+`;
