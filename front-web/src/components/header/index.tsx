@@ -1,11 +1,21 @@
+import { styled } from 'styled-components';
 import './styles.css';
 
-function Header() {
+export function Header() {
   return (
-    <header className="main-header-container">
-      <h1 className="main-header-title">DS Sales</h1>
-    </header>
+    <Container>
+      <Title className="main-header-title">DS Sales</Title>
+    </Container>
   );
 }
 
-export default Header;
+const Container = styled.header`
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: var(--primary-color);
+`;
+
+const Title = styled.h1`
+  margin-left: 30px;
+`;
