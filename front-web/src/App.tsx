@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import './App.css';
 import { Filter } from './components/filter';
 import { Header } from './components/header';
+import { SileByDate } from './components/saleByDate';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Header />
       <Wapper>
         <Filter />
+        <SileByDate />
       </Wapper>
     </>
   );

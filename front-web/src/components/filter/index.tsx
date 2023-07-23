@@ -13,29 +13,41 @@ export function Filter() {
   };
 
   return (
-    <BaseCard>
-      <Content>
-        <Flatpickr
-          className="input-style"
-          placeholder="Selecione um periodo"
-          onChange={onChangeDate}
-          options={{
-            mode: 'range',
-            dateFormat: 'd/m/Y',
-            showMonths: 2
-          }}
-        />
-        <select className="input-style">
-          <option value={''}>Selecione um gênero</option>
-          <option value={'MALE'}>Masculino</option>
-          <option value={'FEMALE'}>Feminino</option>
-          <option value={'OTHER'}>Outro</option>
-        </select>
-      </Content>
-    </BaseCard>
+    <Container>
+      <BaseCard>
+        <Content>
+          <Flatpickr
+            className="input-style"
+            placeholder="Selecione um periodo"
+            onChange={onChangeDate}
+            options={{
+              mode: 'range',
+              dateFormat: 'd/m/Y',
+              showMonths: 2
+            }}
+          />
+          <select className="input-style">
+            <option value={''}>Selecione um gênero</option>
+            <option value={'MALE'}>Masculino</option>
+            <option value={'FEMALE'}>Feminino</option>
+            <option value={'OTHER'}>Outro</option>
+          </select>
+        </Content>
+      </BaseCard>
+    </Container>
   );
 }
 
+const Container = styled.div`
+  margin-bottom: 30px;
+`;
+
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 20px;
+
+  @media (min-width: 710px) {
+    flex-direction: row;
+  }
 `;
