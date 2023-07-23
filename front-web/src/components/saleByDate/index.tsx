@@ -1,7 +1,17 @@
-import styled from 'styled-components';
 import { BaseCard } from '../../Style';
 import ReactApexChart from 'react-apexcharts';
 import { chartOptions } from './helpers';
+import {
+  Container,
+  DataContent,
+  GraphicsContent,
+  HeaderContent,
+  Subtitle,
+  Subtitle2,
+  Title,
+  Total,
+  TotalContent
+} from './style';
 
 export function SileByDate() {
   const initialValues = [
@@ -126,57 +136,3 @@ export function SileByDate() {
     </BaseCard>
   );
 }
-
-const Container = styled.div`
-  padding: 20px;
-`;
-
-const HeaderContent = styled.div``;
-
-const DataContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-
-  @media (min-width: 764px) {
-    flex-direction: row;
-    align-items: end;
-    justify-content: space-between;
-  }
-`;
-
-const TotalContent = styled.div`
-  margin-top: 30px;
-`;
-
-const GraphicsContent = styled.div`
-  max-width: 920px;
-  margin-top: 20px;
-  width: 90%;
-`;
-
-const Title = styled.div`
-  color: var(--light-color);
-  font-weight: 700;
-  font-size: 24px;
-`;
-
-const Total = styled.h3`
-  color: var(--light-color);
-  font-weight: 700;
-  font-size: 36px;
-`;
-
-const Subtitle = styled.h4`
-  color: var(--grey-light-100-color);
-  max-width: 250px;
-  font-weight: 400;
-  margin-top: 3px;
-  font-size: 18px;
-`;
-
-const Subtitle2 = styled.p`
-  color: var(--green-color);
-  font-weight: 400;
-  font-size: 18px;
-`;
