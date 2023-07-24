@@ -1,4 +1,3 @@
-import { styled } from 'styled-components';
 import { BaseCard } from '../../../Style';
 import { Container, Icon, Label, Value, Wapper } from './style';
 

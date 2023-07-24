@@ -4,6 +4,7 @@ import { Filter } from './components/filter';
 import { Header } from './components/header';
 import { SileByDate } from './components/saleByDate';
 import { SalesSummary } from './components/salesSummary';
+import { PieChartCard } from './components/pieChartCard';
 
 export default function App() {
   return (
@@ -14,8 +15,16 @@ export default function App() {
         <SileByDate />
         <SalesContainer>
           <SalesSummary />
-          <div>grafico 1</div>
-          <div>grafico 2</div>
+          <PieChartCard
+            name="Lojas"
+            labels={['Campo Mourão', 'Araruna', 'Maringá']}
+            series={[10, 50, 40]}
+          />
+          <PieChartCard
+            name="Pagamento"
+            labels={['Crédito', 'Débito', 'Dinheiro']}
+            series={[60, 20, 20]}
+          />
         </SalesContainer>
       </Wapper>
     </>
