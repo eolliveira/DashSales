@@ -5,6 +5,7 @@ import { Header } from './components/header';
 import { SileByDate } from './components/saleByDate';
 import { SalesSummary } from './components/salesSummary';
 import { PieChartCard } from './components/pieChartCard';
+import SalesTable from './components/salesTable';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             series={[60, 20, 20]}
           />
         </SalesContainer>
+        <SalesTable />
       </Wapper>
     </>
   );

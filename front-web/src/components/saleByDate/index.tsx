@@ -1,6 +1,6 @@
 import { BaseCard } from '../../Style';
 import ReactApexChart from 'react-apexcharts';
-import { chartOptions } from './helpers';
+import { buildChartsSeries, chartOptions, sumSalesByDate } from './helpers';
 import {
   Container,
   DataContent,
@@ -12,102 +12,26 @@ import {
   Total,
   TotalContent
 } from './style';
+import { useEffect, useState } from 'react';
+import { ChartSeriesData, SalesByDate } from '../../types';
+import { makeRequest } from '../../utils/request';
+import { formatPrice } from '../../utils/formatters';
 
 export function SileByDate() {
-  const initialValues = [
-    {
-      x: '2023-07-01',
-      y: 54
-    },
-    {
-      x: '2023-07-02',
-      y: 66
-    },
-    {
-      x: '2023-07-03',
-      y: 66
-    },
-    {
-      x: '2023-07-04',
-      y: 66
-    },
-    {
-      x: '2023-07-05',
-      y: 66
-    },
-    {
-      x: '2023-07-06',
-      y: 66
-    },
-    {
-      x: '2023-07-07',
-      y: 66
-    },
-    {
-      x: '2023-07-08',
-      y: 66
-    },
-    {
-      x: '2023-07-09',
-      y: 66
-    },
-    {
-      x: '2023-07-10',
-      y: 66
-    },
-    {
-      x: '2023-07-11',
-      y: 66
-    },
-    {
-      x: '2023-07-12',
-      y: 66
-    },
-    {
-      x: '2023-07-05',
-      y: 66
-    },
-    {
-      x: '2023-07-06',
-      y: 2
-    },
-    {
-      x: '2023-07-07',
-      y: 4
-    },
-    {
-      x: '2023-07-08',
-      y: 66
-    },
-    {
-      x: '2023-07-09',
-      y: 66
-    },
-    {
-      x: '2023-07-10',
-      y: 6
-    },
-    {
-      x: '2023-07-11',
-      y: 7
-    },
-    {
-      x: '2023-07-12',
-      y: 5
-    },
-    {
-      x: '2023-07-13',
-      y: 10
-    },
-    {
-      x: '2023-07-14',
-      y: 20
-    },
-    {
-      x: '2023-07-15',
-      y: 66
-    }
-  ];
+  const [salesByDate, setSalesByDate] = useState<ChartSeriesData[]>([]);
+  const [totalSum, setTotalSum] = useState(0);
+
+  useEffect(() => {
+    makeRequest
+      .get<SalesByDate[]>(`/sales/by-date?minDate=2017-01-01&maxDate=2017-01-31&gender=FEMALE`)
+      .then((response) => {
+        const newSeriesData = buildChartsSeries(response.data);
+        setSalesByDate(newSeriesData);
+        const sumSeriesData = sumSalesByDate(response.data);
+        setTotalSum(sumSeriesData);
+      })
+      .catch((error) => console.log('Erro ao buscar vendas por data: ' + error));
+  }, []);
 
   return (
     <BaseCard>
@@ -118,14 +42,14 @@ export function SileByDate() {
         </HeaderContent>
         <DataContent>
           <TotalContent>
-            <Total>R$ 464.988,00</Total>
+            <Total>{formatPrice(totalSum)}</Total>
             <Subtitle2>Vendas no período</Subtitle2>
             <Subtitle>O gráfico mostra as vendas em todas as lojas</Subtitle>
           </TotalContent>
           <GraphicsContent>
             <ReactApexChart
               options={chartOptions}
-              series={[{ name: 'Solicitações', data: initialValues }]}
+              series={[{ name: 'Solicitações', data: salesByDate }]}
               type="bar"
               width={'100%'}
               height={240}
