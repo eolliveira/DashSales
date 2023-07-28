@@ -2,20 +2,28 @@ import './App.css';
 import styled from 'styled-components';
 import { Filter } from './components/filter';
 import { Header } from './components/header';
-import { SileByDate } from './components/saleByDate';
+import { SalesByDateComponent } from './components/saleByDateComponent';
 import { SalesSummary } from './components/salesSummary';
 import { PieChartCard } from './components/pieChartCard';
 import SalesTable from './components/salesTable';
+import { FilterData } from './types';
+import { useState } from 'react';
 
 export default function App() {
+  const [filterData, setFilterData] = useState<FilterData>();
+
+  const onFilterChange = (filterData: FilterData) => {
+    setFilterData(filterData);
+  };
+
   return (
     <>
       <Header />
       <Wapper>
-        <Filter />
-        <SileByDate />
+        <Filter onFilterChange={onFilterChange} />
+        <SalesByDateComponent filterData={filterData} />
         <SalesContainer>
-          <SalesSummary />
+          <SalesSummary filterData={filterData} />
           <PieChartCard
             name="Lojas"
             labels={['Campo Mourão', 'Araruna', 'Maringá']}

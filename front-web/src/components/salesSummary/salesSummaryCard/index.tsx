@@ -3,7 +3,7 @@ import { Container, Icon, Label, Value, Wapper } from './style';
 
 type SalesSummaryCardProps = {
   label: string;
-  value: number;
+  value?: number | string;
   icon: React.ReactNode;
 };
 
