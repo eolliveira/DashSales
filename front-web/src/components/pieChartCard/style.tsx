@@ -8,5 +8,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
-  width: 30%;
+  width: 100%;
+
+  @media (min-width: 1370px) {
+    width: 30%;
+  }
 `;

@@ -66,6 +66,12 @@ const Wapper = styled.div`
 
 const SalesContainer = styled.div`
   margin-top: 30px;
+  flex-wrap: wrap;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: 1370px) {
+    flex-direction: row;
+  }
 `;
