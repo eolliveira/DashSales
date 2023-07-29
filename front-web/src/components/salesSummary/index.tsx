@@ -21,7 +21,7 @@ const initialValue = {
 
 export function SalesSummary({ filterData }: SalesSummaryProps) {
   const [summary, setSummary] = useState<SalesSummaryData>(initialValue);
-  //só cria renderiza um filtro se for auterado a dependencia(cache)
+  //só cria/renderiza o filtro se for alterado a dependencia(cache)
   const params = useMemo(() => buildFilterParams(filterData), [filterData]);
 
   useEffect(() => {

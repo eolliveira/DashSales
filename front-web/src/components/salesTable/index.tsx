@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { FilterData, Gender, Sale, SalesResponse } from '../../types';
 import { formatDate, formatPrice } from '../../utils/formatters';
-import { makeRequest } from '../../utils/request';
+import { buildFilterParams, makeRequest } from '../../utils/request';
 import './styles.css';
 
 type Props = {
@@ -15,30 +15,30 @@ const extraParams = {
 };
 
 function SalesTable({ filterData }: Props) {
-  // const [sales, setSales] = useState<Sale[]>([]);
+  const [sales, setSales] = useState<Sale[]>([]);
 
-  // const params = useMemo(() => buildFilterParams(filterData, extraParams), [filterData]);
+  const params = useMemo(() => buildFilterParams(filterData, extraParams), [filterData]);
 
-  // useEffect(() => {
-  //   makeRequest
-  //     .get<SalesResponse>('/sales', { params })
-  //     .then((response) => {
-  //       setSales(response.data.content);
-  //     })
-  //     .catch(() => {
-  //       console.error('Error to fetch sales');
-  //     });
-  // }, [params]);
+  useEffect(() => {
+    makeRequest
+      .get<SalesResponse>('/sales', { params })
+      .then((response) => {
+        setSales(response.data.content);
+      })
+      .catch(() => {
+        console.error('Error to fetch sales');
+      });
+  }, [params]);
 
-  // const formatGender = (gender: Gender) => {
-  //   const textByGender = {
-  //     MALE: 'Masculino',
-  //     FEMALE: 'Feminino',
-  //     OTHER: 'Outros'
-  //   };
+  const formatGender = (gender: Gender) => {
+    const textByGender = {
+      MALE: 'Masculino',
+      FEMALE: 'Feminino',
+      OTHER: 'Outros'
+    };
 
-  //   return textByGender[gender];
-  // };
+    return textByGender[gender];
+  };
 
   return (
     <div className="sales-table-container base-card">
@@ -55,7 +55,7 @@ function SalesTable({ filterData }: Props) {
             <th>Total</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {sales.map((sale) => (
             <tr key={sale.id}>
               <td>#{sale.id}</td>
@@ -67,7 +67,7 @@ function SalesTable({ filterData }: Props) {
               <td>{formatPrice(sale.total)}</td>
             </tr>
           ))}
-        </tbody> */}
+        </tbody>
       </table>
     </div>
   );

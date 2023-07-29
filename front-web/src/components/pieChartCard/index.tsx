@@ -9,7 +9,6 @@ type PieChartCardProps = {
   series?: number[];
 };
 
-// esse componente a soma dos valores devem sempre resultar em 100
 export function PieChartCard({ labels = [], name, series = [] }: PieChartCardProps) {
   return (
     <Container>

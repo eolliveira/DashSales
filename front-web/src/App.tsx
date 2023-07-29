@@ -54,7 +54,7 @@ export default function App() {
             series={salesByPayment?.series}
           />
         </SalesContainer>
-        <SalesTable />
+        <SalesTable filterData={filterData} />
       </Wapper>
     </>
   );

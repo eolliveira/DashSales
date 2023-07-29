@@ -37,6 +37,7 @@ export const buildPieChartConfig = (labels: string[] = [], name: string) => {
       pie: {
         size: 400,
         donut: {
+          // largura do graficode rosca
           size: '85%',
           labels: {
             show: true,
