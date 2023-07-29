@@ -1,13 +1,13 @@
 import { BaseCard } from '../../../Style';
 import { Container, Icon, Label, Value, Wapper } from './style';
 
-type SalesSummaryCardProps = {
+type SalesSummaryCardComponentProps = {
   label: string;
-  value?: number | string;
+  value: number | string;
   icon: React.ReactNode;
 };
 
-export function SalesSummaryCard({ label, value, icon }: SalesSummaryCardProps) {
+export function SalesSummaryCardComponent({ label, value, icon }: SalesSummaryCardComponentProps) {
   return (
     <Wapper>
       <BaseCard>
